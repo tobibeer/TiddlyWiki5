@@ -62,14 +62,22 @@ $tw.utils.isDate = function(value) {
 Iterate through all the own properties of an object or array. Callback is invoked with (element,title,object)
 */
 $tw.utils.each = function(object,callback) {
-	var f;
+	var next,f;
 	if(object) {
 		if(Object.prototype.toString.call(object) == "[object Array]") {
-			object.forEach(callback);
+			for (f=0; f<object.length; f++) {
+				next = callback(object[f],f,object);
+				if(next === false) {
+					break;
+				}
+		    }
 		} else {
 			for(f in object) {
 				if(Object.prototype.hasOwnProperty.call(object,f)) {
-					callback(object[f],f,object);
+					next = callback(object[f],f,object);
+					if(next === false) {
+						break;
+					}
 				}
 			}
 		}
@@ -354,21 +362,20 @@ Returns true if the version string A is greater than the version string B. Retur
 */
 $tw.utils.checkVersions = function(versionStringA,versionStringB) {
 	var defaultVersion = {
-			major: 0,
-			minor: 0,
-			patch: 0
-		},
-		versionA = $tw.utils.parseVersion(versionStringA) || defaultVersion,
-		versionB = $tw.utils.parseVersion(versionStringB) || defaultVersion,
-		diff = [
-			versionA.major - versionB.major,
-			versionA.minor - versionB.minor,
-			versionA.patch - versionB.patch
-		];
+		major: 0,
+		minor: 0,
+		patch: 0
+	},
+	versionA = $tw.utils.parseVersion(versionStringA) || defaultVersion,
+	versionB = $tw.utils.parseVersion(versionStringB) || defaultVersion,
+	diff = [
+		versionA.major - versionB.major,
+		versionA.minor - versionB.minor,
+		versionA.patch - versionB.patch
+	];
 	return (diff[0] > 0) ||
 		(diff[0] === 0 && diff[1] > 0) ||
-		(diff[0] === 0 && diff[1] === 0 && diff[2] > 0) ||
-		(diff[0] === 0 && diff[1] === 0 && diff[2] === 0);
+		(diff[0] === 0 && diff[1] === 0 && diff[2] > 0);
 };
 
 /*
@@ -413,7 +420,7 @@ $tw.utils.evalGlobal = function(code,context,filename) {
 		contextValues.push(value);
 	});
 	// Add the code prologue and epilogue
-	code = "(function(" + contextNames.join(",") + ") {(function(){\n" + code + ";})();\nreturn exports;\n})\n";
+	code = "(function(" + contextNames.join(",") + ") {(function(){\n" + code + "\n;})();\nreturn exports;\n})\n";
 	// Compile the code into a function
 	var fn;
 	if($tw.browser) {
@@ -930,7 +937,7 @@ $tw.Wiki = function(options) {
 
 	};
 
-	// Test for the existence of a tiddler
+	// Test for the existence of a tiddler (excludes shadow tiddlers)
 	this.tiddlerExists = function(title) {
 		return !!$tw.utils.hop(tiddlers,title);
 	};
@@ -1529,7 +1536,7 @@ $tw.getLibraryItemSearchPaths = function(libraryPath,envVar) {
 	var pluginPaths = [path.resolve($tw.boot.corePath,libraryPath)],
 		env = process.env[envVar];
 	if(env) {
-		Array.prototype.push.apply(pluginPaths,env.split(":"));
+		Array.prototype.push.apply(pluginPaths,env.split(path.delimiter));
 	}
 	return pluginPaths;
 };
@@ -1897,6 +1904,35 @@ $tw.boot.isStartupTaskEligible = function(taskModule) {
 		}
 	}
 	return true;
+};
+
+/*
+Global Hooks mechanism which allows plugins to modify default functionality
+*/
+$tw.hooks = $tw.hooks || { names: {}};
+ 
+/*
+Add hooks to the  hashmap 
+*/
+$tw.hooks.addHook = function(hookName,definition) {
+	if($tw.utils.hop($tw.hooks.names,hookName)) {
+		$tw.hooks.names[hookName].push(definition);
+	}
+	else {
+		$tw.hooks.names[hookName] = [definition];
+	}
+};
+ 
+/*
+Invoke the hook by key 
+*/
+$tw.hooks.invokeHook = function(hookName, value) {
+	if($tw.utils.hop($tw.hooks.names,hookName)) {
+		for (var i = 0; i < $tw.hooks.names[hookName].length; i++) {
+			value = $tw.hooks.names[hookName][i](value);
+		}
+	}
+	return value;
 };
 
 /////////////////////////// Main boot function to decrypt tiddlers and then startup

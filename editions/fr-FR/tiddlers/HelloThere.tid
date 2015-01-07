@@ -1,14 +1,17 @@
 caption: Bienvenue !
 created: 20130822170200000
-creator: xcazin
-list: [[Découvrez TiddlyWiki]] [[Certaines choses qu'on peut faire avec TiddlyWiki] [[Dix raisons de passer à TiddlyWiki]] Examples [[Histoire de TiddlyWiki]] [[Qu'est-il arrivé au TiddlyWiki d'origine ?]]
-modified: 20141115211533396
-modifier: 127.0.0.1
+fr-title: Bienvenue !
+list: [[Discover TiddlyWiki]] [[Some of the things you can do with TiddlyWiki]] [[Ten reasons to switch to TiddlyWiki]] Examples [[History of TiddlyWiki]] [[What happened to the original TiddlyWiki?]]
+modified: 20141221121901696
 tags: TableOfContents
 title: HelloThere
 type: text/vnd.tiddlywiki
 
 Bienvenue sur <<tw>>, une application web dédiée à la prise de notes, dont le signe distinctif est la grande souplesse d'utilisation. Vous pouvez l'obtenir gratuitement, la stocker n'importe où, et la personnaliser selon vos souhaits. Elle vous servira à conserver, organiser, et partager vos notes de manière inédite en comparaison des traitements de texte et autres outils habituels de prise de notes.
+
+<$button class="tc-btn-big-green" to="Introduction Video" style="background:red;">
+{{$:/core/images/video}} Visionnez une introduction en vidéo
+</$button>
 
 <<tw>> privilégie la non-linéarité : le contenu se structure à l'aide de déroulés, de tags, d'hyperliens, et d'autres fonctionnalités spécifiques. Vous pouvez organiser vos notes et y accéder selon votre manière de penser, sans vous sentir contraint par une structure d'organisation prédéfinie.
 
@@ -16,10 +19,8 @@ Vous pouvez utiliser <<tw>> sous forme de fichier autonome, affichable et édita
 
 Comment faire fonctionner <<tw>> chez vous ? Notre conseil est de commencer par lire les textes de présentation ci-dessous, puis de naviguer dans la [[table des matières|TableOfContents]] présente dans l'onglet //{{TableOfContents!!caption}}// de la barre latérale. Ou si vous préférez, contentez-vous de suivre [[nos instructions de démarrage|GettingStarted]] et jetez-vous à l'eau !
 
-* [[Découvrez TiddlyWiki|Discover TiddlyWiki]]
-* [[Certaines choses qu'on peut faire avec TiddlyWiki|Some of the things you can do with TiddlyWiki]]
-* [[Dix raisons de passer à TiddlyWiki|Ten reasons to switch to TiddlyWiki]]
-* [[Exemples de TiddlyWiki qu'on peut trouver dans la nature|Examples]]
-* [[Histoire de TiddlyWiki|History of TiddlyWiki]] 
-* [[Qu'est-il arrivé au TiddlyWiki d'origine ?|What happened to the original TiddlyWiki?]]
+<<list-links "[tag[HelloThere]]">>
+
+Voir aussi<<:>>
+
 * [ext[Developer Documentation|http://tiddlywiki.com/dev/index.html]] (en anglais)

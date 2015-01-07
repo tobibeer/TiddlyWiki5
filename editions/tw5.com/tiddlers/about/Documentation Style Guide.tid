@@ -1,13 +1,18 @@
 created: 20140904164608166
 modified: 20140904164935351
 title: Documentation Style Guide
-tags: Improving TiddlyWiki Documentation
+tags: documenting [[Improving TiddlyWiki Documentation]]
 type: text/vnd.tiddlywiki
 
-The documentation for ~TiddlyWiki tries to follow the following guidelines. The aim is to ensure that documentation from different authors reads consistently.
+The documentation for ~TiddlyWiki tries to follow a consistent editorial style. It has two main areas, each with its own tone and audience:
 
-# Do address the reader directly as "you"
-# Avoid the [[passive voice|http://grammar.ccc.commnet.edu/grammar/passive.htm]] in tutorial and introductory material
-# Do use [[British spellings in preference to US spellings|http://en.wikipedia.org/wiki/American_and_British_English_spelling_differences]]
+* [[Instruction Tiddlers]]
+* [[Reference Tiddlers]]
 
-See also the guidelines for [[tiddler titles|Adopt a Titles Policy]].
+Keep the two areas distinct, otherwise beginners will be overwhelmed and experts will be denied quick access to information.
+
+* [[Tiddler Titles]]
+* [[Tiddler Structure]]
+* [[Spelling]]
+* [[Typography]]
+* [[Technical Prose Style]]
