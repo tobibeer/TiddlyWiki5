@@ -39,6 +39,7 @@ SetFieldWidget.prototype.execute = function() {
 	this.actionField = this.getAttribute("$field");
 	this.actionIndex = this.getAttribute("$index");
 	this.actionValue = this.getAttribute("$value");
+	this.eventId = this.getAttribute("$event");
 	this.actionTimestamp = this.getAttribute("$timestamp","yes") === "yes";
 };
 
@@ -47,7 +48,7 @@ Refresh the widget by ensuring our attributes are up to date
 */
 SetFieldWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	if(changedAttributes["$tiddler"] || changedAttributes["$field"] || changedAttributes["$index"] || changedAttributes["$value"]) {
+	if(changedAttributes.$tiddler || changedAttributes.$field || changedAttributes.$index || changedAttributes.$value || changedAttributes.$event) {
 		this.refreshSelf();
 		return true;
 	}
@@ -57,17 +58,24 @@ SetFieldWidget.prototype.refresh = function(changedTiddlers) {
 /*
 Invoke the action associated with this widget
 */
-SetFieldWidget.prototype.invokeAction = function(triggeringWidget,event) {
-	var self = this,
+SetFieldWidget.prototype.invokeAction = function(triggeringWidget,event,id) {
+	var handled,
+		self = this,
 		options = {};
-	options.suppressTimestamp = !this.actionTimestamp;
-	this.wiki.setText(this.actionTiddler,this.actionField,this.actionIndex,this.actionValue,options);
-	$tw.utils.each(this.attributes,function(attribute,name) {
-		if(name.charAt(0) !== "$") {
-			self.wiki.setText(self.actionTiddler,name,undefined,attribute,options);
-		}
-	});
-	return true; // Action was invoked
+	if(id && this.eventId !== id) {
+		handled = false;
+	} else {
+		options.suppressTimestamp = !this.actionTimestamp;
+		this.wiki.setText(this.actionTiddler,this.actionField,this.actionIndex,this.actionValue,options);
+		$tw.utils.each(this.attributes,function(attribute,name) {
+			if(name.charAt(0) !== "$") {
+				self.wiki.setText(self.actionTiddler,name,undefined,attribute,options);
+			}
+		});
+		handled = true;
+	}
+	// Return whether action was invoked
+	return handled;
 };
 
 exports["action-setfield"] = SetFieldWidget;

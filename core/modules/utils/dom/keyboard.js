@@ -13,10 +13,20 @@ Keyboard utilities
 "use strict";
 
 var namedKeys = {
-	"backspace": 8,
-	"tab": 9,
-	"enter": 13,
-	"escape": 27
+	"BACKSPACE": 8,
+	"TAB": 9,
+	"ENTER": 13,
+	"ESCAPE": 27,
+	"PAGEUP": 33,
+	"PAGEDOWN": 34,
+	"END": 35,
+	"HOME": 36,
+	"LEFT":	37,
+	"UP": 38,
+	"RIGHT": 39,
+	"DOWN": 40,
+	"INSERT": 45,
+	"DELETE": 46
 };
 
 /*
@@ -32,28 +42,37 @@ Key descriptors have the following format:
 	ctrl+shift+alt+A
 */
 exports.parseKeyDescriptor = function(keyDescriptor) {
-	var components = keyDescriptor.split("+"),
+	var neg,s,t,
+		components = keyDescriptor.toUpperCase().split("+"),
 		info = {
-			keyCode: 0,
+			keyCode: null,
 			shiftKey: false,
 			altKey: false,
 			ctrlKey: false
 		};
-	for(var t=0; t<components.length; t++) {
-		var s = components[t].toLowerCase();
-		// Look for modifier keys
-		if(s === "ctrl") {
-			info.ctrlKey = true;
-		} else if(s === "shift") {
-			info.shiftKey = true;
-		} else if(s === "alt") {
-			info.altKey = true;
-		} else if(s === "meta") {
-			info.metaKey = true;
+	for(t=0; t<components.length; t++) {
+		neg = false;
+		s = components[t];
+		// Look for negation
+		if(s.substr(0,1) === "!") {
+			neg = true;
+			s = s.substr(1);
 		}
+		// Look for modifier keys
+		if(s === "CTRL") {
+			info.ctrlKey = neg ? null : true;
+		} else if(s === "SHIFT") {
+			info.shiftKey =  neg ? null : true;
+		} else if(s === "ALT") {
+			info.altKey =  neg ? null : true;
+		} else if(s === "META") {
+			info.metaKey =  neg ? null : true;
 		// Replace named keys with their code
-		if(namedKeys[s]) {
+		} else if(namedKeys[s]) {
 			info.keyCode = namedKeys[s];
+		// Normal letter
+		} else {
+			info.keyCode = s.charCodeAt(0);
 		}
 	}
 	return info;
@@ -61,11 +80,11 @@ exports.parseKeyDescriptor = function(keyDescriptor) {
 
 exports.checkKeyDescriptor = function(event,keyInfo) {
 	var metaKeyStatus = !!keyInfo.metaKey; // Using a temporary variable to keep JSHint happy
-	return event.keyCode === keyInfo.keyCode && 
-			event.shiftKey === keyInfo.shiftKey && 
-			event.altKey === keyInfo.altKey && 
-			event.ctrlKey === keyInfo.ctrlKey && 
-			event.metaKey === metaKeyStatus;	
+	return (keyInfo.keyCode === null || event.keyCode === keyInfo.keyCode) &&
+		(keyInfo.shiftKey === null ? !event.shiftKey : event.shiftKey === keyInfo.shiftKey) &&
+		(keyInfo.altKey === null ? !event.altKey : event.altKey === keyInfo.altKey) &&
+		(keyInfo.ctrlKey === null ? !event.ctrlKey : event.ctrlKey === keyInfo.ctrlKey) &&
+		(keyInfo.metaKey === null ? !event.metaKey : event.metaKey === metaKeyStatus);
 };
 
 })();
