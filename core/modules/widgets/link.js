@@ -122,35 +122,44 @@ LinkWidget.prototype.renderLink = function(parent,nextSibling) {
 };
 
 LinkWidget.prototype.handleClickEvent = function(event) {
-	// Anchor link
-	if(this.anchor && $tw.browser) {
-		// Find anchor elment
-		var el = document.getElementById(this.anchor);
-		if(!el) {
-			el = document.getElementsByName(this.anchor);
-			el = el.length ? el[0] : null;
-		}
-		if(el) {
-			new $tw.utils.PageScroller().scrollIntoView(el);
-		}
-	// Otherwise
-	} else {
+	var self=this,
 		// Send the click on its way as a navigate event
-		var bounds = this.domNodes[0].getBoundingClientRect();
-		this.dispatchEvent({
-			type: "tm-navigate",
-			navigateTo: this.to,
-			navigateFromTitle: this.getVariable("storyTiddler"),
-			navigateFromNode: this,
-			navigateFromClientRect: { top: bounds.top, left: bounds.left, width: bounds.width, right: bounds.right, bottom: bounds.bottom, height: bounds.height
-			},
-			navigateSuppressNavigation: event.metaKey || event.ctrlKey || (event.button === 1)
-		});
-	}
+		bounds = this.domNodes[0].getBoundingClientRect(),
+		titles = this.wiki.getTiddlerList(this.storyTitle) || [],
+		open = titles.indexOf(this.to) >= 0;
+
+	this.dispatchEvent({
+		type: "tm-navigate",
+		navigateTo: this.to,
+		navigateFromTitle: this.getVariable("storyTiddler"),
+		navigateFromNode: this,
+		navigateFromClientRect: { top: bounds.top, left: bounds.left, width: bounds.width, right: bounds.right, bottom: bounds.bottom, height: bounds.height
+		},
+		navigateSuppressNavigation: event.metaKey || event.ctrlKey || (event.button === 1) || this.anchor
+	});
 	if(this.domNodes[0].hasAttribute("href")) {
 		event.preventDefault();
 	}
 	event.stopPropagation();
+	// Anchor link
+	if(this.anchor && $tw.browser) {
+		var scrollToAnchor = function() {
+			// Find anchor elment
+			var el = document.getElementById(self.anchor);
+			if(!el) {
+				el = document.getElementsByName(self.anchor);
+				el = el.length ? el[0] : null;
+			}
+			if(el) {
+				new $tw.utils.PageScroller().scrollIntoView(el);
+			}
+		};
+		if (open) {
+			scrollToAnchor();
+		} else {
+			setTimeout(scrollToAnchor,$tw.utils.getAnimationDuration() + 200);
+		}
+	}
 	return false;
 };
 

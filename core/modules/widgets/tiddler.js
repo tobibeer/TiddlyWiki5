@@ -27,10 +27,25 @@ TiddlerWidget.prototype = new Widget();
 Render this widget into the DOM
 */
 TiddlerWidget.prototype.render = function(parent,nextSibling) {
+	var self=this;
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
 	this.renderChildren(parent,nextSibling);
+	if(this.anchors) {
+		$tw.utils.each(
+			this.children[0].domNodes[0].querySelectorAll("h1,h2,h3,h4,h5,h6"),
+			function(h) {
+				if(!$tw.utils.hasClass(h,"tc-title")) {
+					if(!h.getAttribute("id")) {
+						h.setAttribute("id",
+						   (self.tiddlerTitle + "_-_" + (h.textContent || h.innerText))
+							   .replace(/\s/mg,"_"));
+					}
+				}
+			}
+		);
+	}
 };
 
 /*
@@ -53,6 +68,8 @@ Compute the tiddler state flags
 TiddlerWidget.prototype.computeTiddlerState = function() {
 	// Get our parameters
 	this.tiddlerTitle = this.getAttribute("tiddler",this.getVariable("currentTiddler"));
+	// Remember if we want anchors for headings
+	this.anchors = this.getAttribute("anchors") !== undefined;
 	// Compute the state
 	var state = {
 		currentTiddler: this.tiddlerTitle || "",

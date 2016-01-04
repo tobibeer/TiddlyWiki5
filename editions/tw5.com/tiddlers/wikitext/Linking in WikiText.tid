@@ -1,13 +1,13 @@
 caption: Linking
 created: 20131205155230596
-modified: 20160104133729591
+modified: 20160104205910609
 tags: WikiText
 title: Linking in WikiText
 type: text/vnd.tiddlywiki
 
-<a name=" manual"/>A key capability of WikiText is the ability to make links to other tiddlers or to external websites.
+A key capability of WikiText is the ability to make links to other tiddlers or to external websites.
 
-<a id="manual links"/>
+<a id="manual_links"/>
 
 ! Manual Links
 
@@ -85,7 +85,15 @@ In general, TiddlyWiki interprets a change to the location hash in your browsers
 The above link points to an __anchor__ previously declared at the desired location in this tiddler as:
 
 ```
-<a id="manual links"/>
+<a id="manual_links"/>
 ```
 
 ''Note:'' For anchor links to work, the content containing the target anchor must be displayed first. Also, be sure to always use anchor ids or names unique throughout the entire wiki.
+
+For headings in the story column, unique ids are created, insofar as the headings are unique. The following example demonstrates linking to a heading inside a tiddler.
+
+```
+[#[ButtonWidget - Content and Attributes#ButtonWidget attributes|ButtonWidget]]
+```
+
+> [#[ButtonWidget - Content and Attributes#ButtonWidget attributes|ButtonWidget]]

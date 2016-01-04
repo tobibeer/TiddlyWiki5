@@ -37,7 +37,7 @@ exports.parse = function() {
 	return [{
 		type: "link",
 		attributes: {
-			anchor: {type: "string", value: anchor},
+			anchor: {type: "string", value: anchor.replace(/\s/mg,"_")},
 			to: {type: "string", value: to}
 		},
 		children: [{
