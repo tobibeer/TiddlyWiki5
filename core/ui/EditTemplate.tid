@@ -1,10 +1,10 @@
 title: $:/core/ui/EditTemplate
 
 \define frame-classes()
-tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$
+tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ $(customTiddlerClass)$
 \end
+<$vars customTiddlerClass={{!!css.class}} storyTiddler=<<currentTiddler>>>
 <div class=<<frame-classes>>>
-<$set name="storyTiddler" value=<<currentTiddler>>>
 <$keyboard key={{$:/config/shortcuts/cancel-edit-tiddler}} message="tm-cancel-tiddler">
 <$keyboard key={{$:/config/shortcuts/save-tiddler}} message="tm-save-tiddler">
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/EditTemplate]!has[draft.of]]" variable="listItem">
@@ -12,5 +12,5 @@ tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerCl
 </$list>
 </$keyboard>
 </$keyboard>
-</$set>
 </div>
+</$vars>

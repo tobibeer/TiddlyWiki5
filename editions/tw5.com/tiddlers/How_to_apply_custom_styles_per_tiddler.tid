@@ -1,0 +1,16 @@
+created: 20160104055344452
+css.class: Test
+css.styles: border:10px solid hsla(0,75%,75%,0.3)
+modified: 20160104063608174
+tags: Learning
+title: How to apply custom styles per tiddler
+type: text/vnd.tiddlywiki
+
+You can apply custom css styles to tiddlers by defining either of these two [[fields|TiddlerFields]]:
+
+; css.class
+: to specify css classes given to a particular tiddler
+; css.styles
+: to specify css properties applied to a particular tiddler
+
+Also see: [[How to apply custom styles by tag]].
