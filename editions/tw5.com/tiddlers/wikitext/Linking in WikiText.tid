@@ -1,11 +1,13 @@
+caption: Linking
 created: 20131205155230596
-modified: 20130706185813974
+modified: 20160104133729591
 tags: WikiText
 title: Linking in WikiText
 type: text/vnd.tiddlywiki
-caption: Linking
 
-A key capability of WikiText is the ability to make links to other tiddlers or to external websites.
+<a name=" manual"/>A key capability of WikiText is the ability to make links to other tiddlers or to external websites.
+
+<a id="manual links"/>
 
 ! Manual Links
 
@@ -70,3 +72,20 @@ You can also use the extended syntax to force an external link:
 
 See the LinkWidget for details of the underlying widget used to implement tiddler links, including macros that can be used to customise its behaviour.
 
+! HTML Anchors
+
+In general, TiddlyWiki interprets a change to the location hash in your browsers address-bar as a command to navigate to specified tiddlers. To have the window navigate to an html anchor instead, use anchor names that start with a blank.
+
+```
+[#[manual links]]
+```
+
+> [#[manual links]]
+
+The above link points to an __anchor__ previously declared at the desired location in this tiddler as:
+
+```
+<a id="manual links"/>
+```
+
+''Note:'' For anchor links to work, the content containing the target anchor must be displayed first. Also, be sure to always use anchor ids or names unique throughout the entire wiki.

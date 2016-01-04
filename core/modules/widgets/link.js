@@ -122,17 +122,31 @@ LinkWidget.prototype.renderLink = function(parent,nextSibling) {
 };
 
 LinkWidget.prototype.handleClickEvent = function(event) {
-	// Send the click on its way as a navigate event
-	var bounds = this.domNodes[0].getBoundingClientRect();
-	this.dispatchEvent({
-		type: "tm-navigate",
-		navigateTo: this.to,
-		navigateFromTitle: this.getVariable("storyTiddler"),
-		navigateFromNode: this,
-		navigateFromClientRect: { top: bounds.top, left: bounds.left, width: bounds.width, right: bounds.right, bottom: bounds.bottom, height: bounds.height
-		},
-		navigateSuppressNavigation: event.metaKey || event.ctrlKey || (event.button === 1)
-	});
+	// Anchor link
+	if(this.anchor && $tw.browser) {
+		// Find anchor elment
+		var el = document.getElementById(this.anchor);
+		if(!el) {
+			el = document.getElementsByName(this.anchor);
+			el = el.length ? el[0] : null;
+		}
+		if(el) {
+			new $tw.utils.PageScroller().scrollIntoView(el);
+		}
+	// Otherwise
+	} else {
+		// Send the click on its way as a navigate event
+		var bounds = this.domNodes[0].getBoundingClientRect();
+		this.dispatchEvent({
+			type: "tm-navigate",
+			navigateTo: this.to,
+			navigateFromTitle: this.getVariable("storyTiddler"),
+			navigateFromNode: this,
+			navigateFromClientRect: { top: bounds.top, left: bounds.left, width: bounds.width, right: bounds.right, bottom: bounds.bottom, height: bounds.height
+			},
+			navigateSuppressNavigation: event.metaKey || event.ctrlKey || (event.button === 1)
+		});
+	}
 	if(this.domNodes[0].hasAttribute("href")) {
 		event.preventDefault();
 	}
@@ -216,6 +230,7 @@ LinkWidget.prototype.execute = function() {
 	// Determine the link characteristics
 	this.isMissing = !this.wiki.tiddlerExists(this.to);
 	this.isShadow = this.wiki.isShadowTiddler(this.to);
+	this.anchor = this.getAttribute("anchor");
 	// Make the child widgets
 	this.makeChildWidgets();
 };
@@ -225,7 +240,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 */
 LinkWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	if(changedAttributes.to || changedTiddlers[this.to] || changedAttributes["aria-label"] || changedAttributes.tooltip) {
+	if(changedAttributes.to || changedTiddlers[this.to] || changedAttributes["aria-label"] || changedAttributes.tooltip || changedAttributes.anchor) {
 		this.refreshSelf();
 		return true;
 	}

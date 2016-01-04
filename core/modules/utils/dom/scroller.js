@@ -63,37 +63,10 @@ PageScroller.prototype.scrollIntoView = function(element) {
 	var clientBounds = element.getBoundingClientRect(),
 		bounds = {
 			left: clientBounds.left + scrollPosition.x,
-			top: clientBounds.top + scrollPosition.y,
-			width: clientBounds.width,
-			height: clientBounds.height
+			top: clientBounds.top + scrollPosition.y
 		};
-	// We'll consider the horizontal and vertical scroll directions separately via this function
-	// targetPos/targetSize - position and size of the target element
-	// currentPos/currentSize - position and size of the current scroll viewport
-	// returns: new position of the scroll viewport
-	var getEndPos = function(targetPos,targetSize,currentPos,currentSize) {
-			var newPos = currentPos;
-			// If the target is above/left of the current view, then scroll to it's top/left
-			if(targetPos <= currentPos) {
-				newPos = targetPos;
-			// If the target is smaller than the window and the scroll position is too far up, then scroll till the target is at the bottom of the window
-			} else if(targetSize < currentSize && currentPos < (targetPos + targetSize - currentSize)) {
-				newPos = targetPos + targetSize - currentSize;
-			// If the target is big, then just scroll to the top
-			} else if(currentPos < targetPos) {
-				newPos = targetPos;
-			// Otherwise, stay where we are
-			} else {
-				newPos = currentPos;
-			}
-			// If we are scrolling within 50 pixels of the top/left then snap to zero
-			if(newPos < 50) {
-				newPos = 0;
-			}
-			return newPos;
-		},
-		endX = getEndPos(bounds.left,bounds.width,scrollPosition.x,window.innerWidth),
-		endY = getEndPos(bounds.top,bounds.height,scrollPosition.y,window.innerHeight);
+	var endX = bounds.left < 50 ? 0 : bounds.left,
+		endY = bounds.top < 50 ? 0 : bounds.top;
 	// Only scroll if the position has changed
 	if(endX !== scrollPosition.x || endY !== scrollPosition.y) {
 		var self = this,
