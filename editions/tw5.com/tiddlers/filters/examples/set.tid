@@ -1,0 +1,15 @@
+created: 20161002175147210
+modified: 20161002194814457
+tags: [[Operator Examples]] [[set Operator]]
+title: set Operator (Examples)
+type: text/vnd.tiddlywiki
+
+\define foo() foo [[bar baz]]
+
+<<.operator-example 1 "[[foo]set[bar]]">>
+<<.operator-example 2 "[[]set[foo]]">>
+<<.operator-example 3 "[set:list<foo>]">> with:
+
+```
+\define foo() foo [[bar baz]]
+```

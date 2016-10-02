@@ -1,0 +1,17 @@
+caption: set
+created: 20161002175015809
+modified: 20161002194814463
+op-input: a [[selection of titles|Title Selection]]
+op-output: if there are input titles, the <<.place operand>> is returned
+op-parameter: the title to be returned
+op-parameter-name: operand
+op-purpose: set the <<.place operand>> as the filter output if there are input titles
+op-suffix: optional, whether to turn the <<.place operand>> into a list of tiddlers
+op-suffix-name: list
+tags: [[Filter Operators]]
+title: set Operator
+type: text/vnd.tiddlywiki
+
+<<.operator-examples "set">>
+
+Also see [[or Operator]].

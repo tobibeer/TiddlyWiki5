@@ -1,0 +1,15 @@
+caption: or
+created: 20161002175250189
+modified: 20161002194814451
+op-input: a [[selection of titles|Title Selection]]
+op-output: if there are no input titles, the <<.place operand>> is returned
+op-parameter: the title to be returned
+op-parameter-name: operand
+op-purpose: set the filter output to the <<.place operand>> if there are no input titles
+tags: [[Filter Operators]]
+title: or Operator
+type: text/vnd.tiddlywiki
+
+<<.operator-examples "or">>
+
+Also see [[set Operator]].

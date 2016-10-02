@@ -1,0 +1,16 @@
+created: 20161002175341805
+modified: 20161002194814431
+tags: [[Operator Examples]] [[or Operator]]
+title: or Operator (Examples)
+type: text/vnd.tiddlywiki
+
+\define foo() foo [[bar baz]]
+
+<<.operator-example 1 "[[]or[bar]]">>
+<<.operator-example 2 "[[foo]or[bar]]">>
+<<.operator-example 3 "[[foo]or[bar]set[baz]]">>
+<<.operator-example 4 "[[]or:list<foo>]">> with:
+
+```
+\define foo() foo [[bar baz]]
+```
