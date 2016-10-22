@@ -1,12 +1,7 @@
 title: $:/snippets/paletteswitcher
 
-\define lingo-base() $:/language/ControlPanel/Palette/
-<div class="tc-prompt">
-<<lingo Prompt>> <$view tiddler={{$:/palette}} field="name"/>
-</div>
-
 <$linkcatcher to="$:/palette">
-<div class="tc-chooser"><$list filter="[all[shadows+tiddlers]tag[$:/tags/Palette]sort[description]]"><$set name="cls" filter="[{!!title}field:title{$:/palette}]" value="tc-chooser-item tc-chosen" emptyValue="tc-chooser-item"><div class=<<cls>>><$link to={{!!title}}><div>''<$view field="name" format="text"/>'' - <$view field="description" format="text"/></div><$transclude tiddler="$:/snippets/currpalettepreview"/></$link>
+<div class="tc-chooser"><$list filter="[all[shadows+tiddlers]tag[$:/tags/Palette]sort[description]]"><$set name="cls" filter="[all[current]prefix{$:/palette}]" value="tc-chooser-item tc-chosen" emptyValue="tc-chooser-item"><div class=<<cls>>><$link to={{!!title}}>''<$view field="name" format="text"/>'' - <$view field="description" format="text"/>{{||$:/snippets/currpalettepreview}}</$link>
 </div></$set>
 </$list>
 </div>

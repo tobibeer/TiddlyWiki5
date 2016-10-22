@@ -15,7 +15,5 @@ $:/config/EditorToolbarButtons/Visibility/$(listItem)$
 {{$:/language/ControlPanel/Toolbars/EditorToolbar/Hint}}
 
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]" variable="listItem">
-
-<<toolbar-button>>
-
+<<toolbar-button>><br>
 </$list>

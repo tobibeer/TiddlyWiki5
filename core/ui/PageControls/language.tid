@@ -24,15 +24,8 @@ $(languagePluginTitle)$/icon
 <div class="tc-drop-down tc-drop-down-language-chooser">
 <$linkcatcher to="$:/language">
 <$list filter="[[$:/languages/en-GB]] [plugin-type[language]sort[description]]">
+<$set name="cls" filter="[all[current]field:title{$:/language}]" value="tc-chooser-item tc-chosen" emptyValue="tc-chooser-item"><div class=<<cls>>>
 <$link>
-<span class="tc-drop-down-bullet">
-<$reveal type="match" state="$:/language" text=<<currentTiddler>>>
-&bull;
-</$reveal>
-<$reveal type="nomatch" state="$:/language" text=<<currentTiddler>>>
-&nbsp;
-</$reveal>
-</span>
 <span class="tc-image-button">
 <$set name="languagePluginTitle" value=<<currentTiddler>>>
 <$transclude subtiddler=<<flag-title>>>
@@ -48,6 +41,8 @@ $(languagePluginTitle)$/icon
 </$view>
 </$view>
 </$link>
+</div>
+</$set>
 </$list>
 </$linkcatcher>
 </div>
