@@ -9,11 +9,18 @@ $:/config/EditorToolbarButtons/Visibility/$(listItem)$
 \end
 
 \define toolbar-button()
-<$checkbox tiddler=<<config-title>> field="text" checked="show" unchecked="hide" default="show"> <$transclude tiddler={{$(listItem)$!!icon}}/> <$transclude tiddler=<<listItem>> field="caption"/> -- <i class="tc-muted"><$transclude tiddler=<<listItem>> field="description"/></i></$checkbox>
+<$checkbox tiddler=<<config-title>> field="text" checked="show" unchecked="hide" default="show">
+<$transclude tiddler={{$(listItem)$!!icon}}/>
+<$transclude tiddler=<<listItem>> field="caption"/>
+<i class="tc-muted">
+--
+<$transclude tiddler=<<listItem>> field="description"/>
+</i>
+</$checkbox><br>
 \end
 
 {{$:/language/ControlPanel/Toolbars/EditorToolbar/Hint}}
 
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]" variable="listItem">
-<<toolbar-button>><br>
+<<toolbar-button>>
 </$list>
