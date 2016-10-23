@@ -22,28 +22,6 @@ $(languagePluginTitle)$/icon
 </span>
 <$reveal state=<<qualify "$:/state/popup/language">> type="popup" position="below" animate="yes">
 <div class="tc-drop-down tc-drop-down-language-chooser">
-<$linkcatcher to="$:/language">
-<$list filter="[[$:/languages/en-GB]] [plugin-type[language]sort[description]]">
-<$set name="cls" filter="[all[current]field:title{$:/language}]" value="tc-chooser-item tc-chosen" emptyValue="tc-chooser-item"><div class=<<cls>>>
-<$link>
-<span class="tc-image-button">
-<$set name="languagePluginTitle" value=<<currentTiddler>>>
-<$transclude subtiddler=<<flag-title>>>
-<$list filter="[all[current]field:title[$:/languages/en-GB]]">
-<$transclude tiddler="$:/languages/en-GB/icon"/>
-</$list>
-</$transclude>
-</$set>
-</span>
-<$view field="description">
-<$view field="name">
-<$view field="title"/>
-</$view>
-</$view>
-</$link>
-</div>
-</$set>
-</$list>
-</$linkcatcher>
+{{$:/snippets/languageswitcher}}
 </div>
 </$reveal>
