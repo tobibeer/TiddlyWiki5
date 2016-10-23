@@ -627,6 +627,10 @@ button.tc-untagged-label {
 
 .tc-page-controls {
 	margin-top: 14px;
+}
+
+.tc-page-controls > span > button,
+.tc-page-controls > span > span > button{
 	font-size: 1.5em;
 }
 
@@ -1956,7 +1960,7 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 }
 
 .tc-chosen > a.tc-tiddlylink:before {
-	margin-left:-10px;
+	margin-left: -10px;
 	position: relative;
 	content: "» ";
 }
