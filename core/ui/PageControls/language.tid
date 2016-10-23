@@ -21,7 +21,7 @@ $(languagePluginTitle)$/icon
 </$button>
 </span>
 <$reveal state=<<qualify "$:/state/popup/language">> type="popup" position="below" animate="yes">
-<div class="tc-drop-down tc-drop-down-language-chooser">
+<div class="tc-drop-down">
 {{$:/snippets/languageswitcher}}
 </div>
 </$reveal>
