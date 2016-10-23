@@ -1944,7 +1944,10 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 
 .tc-chooser-item:hover a.tc-tiddlylink:hover {
 	text-decoration: underline;
-	color: <<colour foreground>> !important;
+}
+
+.tc-drop-down .tc-chooser-item a.tc-tiddlylink:hover {
+	color: <<colour foreground>>;
 }
 
 .tc-chooser-item.tc-chosen {
