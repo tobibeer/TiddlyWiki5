@@ -1916,11 +1916,13 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 */
 
 .tc-chooser {
-	border: 1px solid <<colour table-border>>;
+	border-right: 1px solid <<colour table-header-background>>;
+	border-left: 1px solid <<colour table-header-background>>;
 }
 
 .tc-chooser-item {
-	border: 8px;
+	border-bottom: 1px solid <<colour table-header-background>>;
+	border-top: 1px solid <<colour table-header-background>>;
 	padding: 2px 4px 2px 14px;
 }
 
@@ -1928,8 +1930,14 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 	padding: 2px;
 }
 
+.tc-chosen,
 .tc-chooser-item:hover {
-	background-color: <<colour tiddler-info-background>>;
+	background-color: <<colour table-header-background>>;
+	border-color: <<colour table-footer-background>>;
+}
+
+.tc-chosen a.tc-tiddlylink {
+	cursor:default;
 }
 
 .tc-chooser-item a.tc-tiddlylink {
@@ -1938,23 +1946,16 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 	background-color: transparent;
 }
 
-.tc-chooser-item:hover a.tc-tiddlylink {
-	text-decoration: underline;
-}
-
 .tc-chooser-item:hover a.tc-tiddlylink:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
+.tc-drop-down .tc-chosen a.tc-tiddlylink,
 .tc-drop-down .tc-chooser-item a.tc-tiddlylink:hover {
 	color: <<colour foreground>>;
 }
 
-.tc-chooser-item.tc-chosen {
-	background-color: <<colour tiddler-info-background>>;
-}
-
-.tc-chooser-item.tc-chosen > a.tc-tiddlylink:before {
+.tc-chosen > a.tc-tiddlylink:before {
 	margin-left:-10px;
 	position: relative;
 	content: "» ";
@@ -1965,7 +1966,6 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 	height: 1em;
 	vertical-align: middle;
 }
-
 .tc-chooser-item img{
 	vertical-align: middle;
 }
