@@ -9,7 +9,7 @@ $:/config/EditorToolbarButtons/Visibility/$(listItem)$
 \end
 
 \define toolbar-button()
-<$checkbox tiddler=<<config-title>> field="text" checked="show" unchecked="hide" default="show">
+<$checkbox tiddler=<<config-title>> field="text" checked="show" unchecked="hide" default="show" class="tc-check-list">
 <$transclude tiddler={{$(listItem)$!!icon}}/>
 <$transclude tiddler=<<listItem>> field="caption"/>
 <i class="tc-muted">

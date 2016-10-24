@@ -135,6 +135,10 @@ input:not([type]) {
 	background: <<colour background>>;
 }
 
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
 .tc-muted {
 	color: <<colour muted-foreground>>;
 }
@@ -627,11 +631,6 @@ button.tc-untagged-label {
 
 .tc-page-controls {
 	margin-top: 14px;
-}
-
-.tc-page-controls > span > button,
-.tc-page-controls > span > span > button{
-	font-size: 1.5em;
 }
 
 .tc-page-controls button {
@@ -1877,6 +1876,18 @@ a.tc-tiddlylink.tc-plugin-info:hover .tc-plugin-info > .tc-plugin-info-chunk > s
 
 .tc-plugin-info-dropdown-body {
 	padding: 1em 1em 1em 1em;
+}
+
+/*
+** Checkbox tiddlers transcluded into ControlPanel. see: #1954
+*/
+
+.tc-check-list {
+	line-height: 2em;
+}
+
+.tc-check-list .tc-image-button {
+	height: 1.5em;
 }
 
 /*
