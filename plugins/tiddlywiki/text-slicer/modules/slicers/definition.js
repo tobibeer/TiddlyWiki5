@@ -16,10 +16,10 @@ exports.processDefinitionNode = function(domNode,tagName) {
 	var text = $tw.utils.htmlEncode(domNode.textContent);
 	if(domNode.nodeType === 1 && tagName === "dd") {
 		// if(!this.isBlank(text)) {
-			var title = this.makeUniqueTitle("definition",text),
+			var title = this.makeUniqueTitle("definition " + text),
 				parentTitle = this.parentStack[this.parentStack.length - 1].title,
 				tags = [];
-			if(domNode.className.trim() !== "") {
+			if(domNode.className && domNode.className.trim() !== "") {
 				tags = tags.concat(domNode.className.split(" "));
 			}
 			this.addToList(parentTitle,title);
