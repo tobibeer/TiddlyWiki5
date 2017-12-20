@@ -1,0 +1,45 @@
+title: $:/editions/tw5.com/TopLeftBar
+tags: $:/tags/TopLeftBar
+
+<nav>
+<label for="show-menu" class="show-menu">Menu</label>
+<input type="checkbox" id="show-menu" role="button">
+<ul>
+	<li><a href="index.html" class="tc-tiddlylink">Home</a></li>
+	<li>
+		<<. tw5 Welcome Wiki>>
+		<ul class="hidden">
+			<li><<. tw5 Platforms Platform>></li>
+			<li><<. plugins Plugins>></li>
+			<li><<. tw5 Languages>></li>
+			<li><<. tw5 Editions>></li>
+			<li><<. tw5 About>></li>
+		</ul>
+	</li>
+	<li>
+		<<. docs Learn>>
+		<ul class="hidden">
+			<li><<. docs Reference Documentation>></li>
+			<li><<. tips Learning Tutor>></li>
+			<li><<. tips Tips>></li>
+		</ul>
+	</li>
+	<li>
+		<<. engage Contribute Engage>>
+		<ul class="hidden">
+			<li><<. engage Contributing Contribute>></li>
+			<li><<. engage Community>></li>
+			<li><<. engage Resources>></li>
+		</ul>
+	</li>
+	<li>
+		<<. dev Developers Code>>
+		<ul class="hidden">
+			<li><<. dev "TiddlyWiki for Developers" Developers>></li>
+			<li><<. node "TiddlyWiki on Node.js" Node>></li>
+			<li><<. dev GitHub Sources>></li>
+			<li><<. dev "TiddlyWiki Architecture" Core>></li>
+		</ul>
+	</li>
+</ul>
+</nav>

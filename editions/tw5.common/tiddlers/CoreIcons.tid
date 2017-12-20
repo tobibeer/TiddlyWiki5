@@ -1,0 +1,5 @@
+title: CoreIcons
+
+<$list filter="[all[shadows]prefix[$:/core/images/]]">
+<$transclude/> {{!!title}}<br><br>
+</$list>

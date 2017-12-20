@@ -1,0 +1,5 @@
+title: $:/SiteSubtitle
+
+\define .link-source() #Tips
+
+<<. tips Tips "Tips & Tricks">>

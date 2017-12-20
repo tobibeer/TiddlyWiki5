@@ -1,0 +1,29 @@
+title: $:/editions/tw5.com/macros
+tags: $:/tags/Macro
+
+\define .link-source() $(src)$#$(tiddler)$
+\define .link-title() $(edition)$ > $(title)$
+\define .link-classes() tc-tiddlyLink tw5-link tw5-edition-$(edition)$
+\define .(edition,tiddler,title)
+<$set
+	name="title"
+	filter="""$title$"""
+	emptyValue="""$tiddler$""">
+<$vars
+	edition="""$edition$"""
+	tiddler="""$tiddler$"""
+	icon={{$:/editions/$edition$!!icon}}
+	src={{$:/editions/$edition$!!src}}>
+<$list filter="[<.link-source>removeprefix[#]]"><$link
+	class=<<.link-classes>>
+	to=<<currentTiddler>>
+	><$transclude tiddler=<<icon>>/><span><$text text=<<title>>/></span></$link>
+</$list>
+<$list filter="[<.link-source>!prefix[#]]"><a
+	href=<<.link-source>>
+	class=<<.link-classes>>
+	><$transclude tiddler=<<icon>>/><span><$text text=<<title>>/></span></a>
+</$list>
+</$vars>
+</$set>
+\end

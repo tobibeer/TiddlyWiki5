@@ -1,0 +1,7 @@
+title: Welcome
+
+* <<. docs Documentation>> | <<. docs [[sort Operator]]>>
+* <<. tips Tips>> | <<. tips "Adding a table of contents to the sidebar">>
+* <<. dev Developers>> | <<. dev "TiddlyWiki Architecture">>
+
+{{HelloThere}}

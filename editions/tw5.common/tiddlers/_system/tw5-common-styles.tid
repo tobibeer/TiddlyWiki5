@@ -1,0 +1,285 @@
+title: $:/editions/common/styles
+tags: $:/tags/Stylesheet
+
+.tw5-link svg {
+    height: 1.2em;
+    width: 1.2em;
+    vertical-align: top;
+	margin-right:3px;
+}
+
+.tc-topbar a.tw5-link svg,
+a.tw5-link.tw5-edition-tw5,
+a.tc-tiddlyLink.tw5-link {
+	text-decoration:none;
+	fill:<<colour tiddler-link-foreground>>;
+}
+
+a.tw5-link:hover span {
+	text-decoration:underline;
+}
+.tc-topbar a.tw5-link.tw5-edition-tw5 svg,
+a.tw5-link.tw5-edition-tw5:hover,
+a.tw5-link.tc-tiddlylink:hover {
+	fill:#00a;
+}
+
+a.tw5-link.tw5-edition-docs,
+.tc-topbar a.tw5-link.tw5-edition-docs svg {
+	color:#0d0;
+	fill:#0d0;
+}
+
+a.tw5-link.tw5-edition-docs:hover {
+	fill:#0a0;
+}
+
+a.tw5-link.tw5-edition-dev,
+.tc-topbar a.tw5-link.tw5-edition-dev svg {
+	color:#aa0;
+	fill:#aa0;
+}
+
+a.tw5-link.tw5-edition-dev:hover {
+	fill:#880;
+}
+
+a.tw5-link.tw5-edition-tips,
+.tc-topbar a.tw5-link.tw5-edition-tips svg {
+	color:#0aa;
+	fill:#0aa;
+}
+
+a.tw5-link.tw5-edition-tips:hover {
+	fill:#088;
+}
+
+a.tw5-link.tw5-edition-node,
+.tc-topbar a.tw5-link.tw5-edition-node svg {
+	color:#43853d;
+	fill:#43853d;
+}
+
+a.tw5-link.tw5-edition-node:hover {
+	fill:#026e00;
+}
+
+a.tw5-link.tw5-edition-engage,
+.tc-topbar a.tw5-link.tw5-edition-engage svg {
+	color:#FFA500;
+	fill:#FFA500;
+}
+
+a.tw5-link.tw5-edition-engage:hover {
+	fill:#DD9300;
+}
+
+a.tw5-link.tw5-edition-plugins,
+.tc-topbar a.tw5-link.tw5-edition-plugins svg {
+	color:#e0e;
+	fill:#e0e;
+}
+
+a.tw5-link.tw5-edition-plugins:hover {
+	fill:#a0a;
+}
+
+
+
+.tc-site-subtitle .tw5-link svg {
+	vertical-align:sub;
+	margin-left:2px;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-tw5,
+.tc-site-subtitle a.tw5-link.tc-tiddlylink {
+	fill:white;
+	color:white;
+	display:block;
+	width:150px;
+	background:<<colour tiddler-link-foreground>>;
+	border-radius:3px;
+	padding:3px;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-tw5:hover {
+	color:#ccc;
+	fill:#ccc;
+	text-decoration:underline;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-docs {
+	background:#0d0;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-docs:hover {
+	background:#0e0;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-dev {
+	background:#aa0;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-dev:hover {
+	background:#cc0;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-tips {
+	background:#0aa;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-tips:hover {
+	background:#088;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-node {
+	background:#43853d;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-node:hover {
+	background:#026e00;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-engage {
+	background:#FFA500;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-engage:hover {
+	background:#DD9500;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-plugins {
+	background:#e0e;
+}
+
+.tc-site-subtitle a.tw5-link.tw5-edition-plugins:hover {
+	background:#a0a;
+}
+
+
+
+
+
+
+
+
+.tc-topbar-left{
+	top:0;
+	height: 40px;
+	width: 80%;
+	padding-top:0.3em;
+	padding-left:1em;
+	background:<<colour page-background>>;
+}
+
+.tc-topbar-left > nav > ul > li > a.tc-tiddlyLink {
+	color:<<colour tiddler-link-foreground>>;
+	text-decoration:none;
+}
+.tc-topbar-left > nav > ul > li > a.tc-tiddlyLinkhover {
+	color:<<colour tiddler-link-foreground>>;
+	text-decoration:underline;
+}
+.tc-topbar-left > nav > ul > li > a > svg {
+	color:<<colour tiddler-link-foreground>>;
+}
+.tc-topbar-left > nav > ul > li > a > svg {
+	display:none;
+}
+.tc-topbar-left .tw5-link svg {
+	width:1em;
+	height:1em;
+	vertical-align:text-top;
+}
+/*Strip the ul of padding and list styling*/
+.tc-topbar-left ul {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: absolute;
+	background:<<colour page-background>>;
+}
+/*Create a horizontal list with spacing*/
+.tc-topbar-left li {
+    display:inline-block;
+    float: left;
+    margin-right: 1px;
+}
+/*Style for menu links*/
+.tc-topbar-left li a {
+	margin:0 1em;
+    display:block;
+    text-decoration: none;
+	font-size:1.5em;
+	line-height:1.5em;
+}
+.tc-topbar-left li a li a{
+	font-size:1.2em;
+	line-height:1.2em;
+}
+/*Hover state for top level links*/
+.tc-topbar-left li:hover a {
+}
+/*Style for dropdown links*/
+.tc-topbar-left li:hover ul a {
+    line-height: 1.5em;
+}
+/*Hover state for dropdown links*/
+.tc-topbar-left li:hover ul a:hover {
+}
+/*Hide dropdown links until they are needed*/
+.tc-topbar-left li ul {
+    display: none;
+}
+/*Make dropdown links vertical*/
+.tc-topbar-left li ul li {
+    display: block;
+    float: none;
+}
+/*Prevent text wrapping*/
+.tc-topbar-left li ul li a {
+    width: auto;
+	height: auto;
+    min-width: 140px;
+    padding: 0.1em;
+}
+/*Display the dropdown on hover*/
+.tc-topbar-left ul li:hover > .hidden,
+.hidden:hover {
+    display: block;
+}
+/*Style 'show menu' label button and hide it by default*/
+.tc-topbar-left .show-menu {
+    text-decoration: none;
+    padding: 10px 0;
+    display: none;
+}
+/*Hide checkbox*/
+.tc-topbar-left input[type=checkbox]{
+    display: none;
+}
+/*Show menu when invisible checkbox is checked*/
+.tc-topbar-left input[type=checkbox]:checked{
+    display: block;
+}
+/*Responsive Styles*/
+@media screen and (max-width : 760px){
+/*Make dropdown links appear inline*/
+.tc-topbar-left ul {
+	position: static;
+	display: none;
+}
+/*Create vertical spacing*/
+.tc-topbar-left li {
+	margin-bottom: 1px;
+}
+/*Make all menu links full width*/
+.tc-topbar-left ul li,
+.tc-topbar-left li a {
+	width: 100%;
+}
+/*Display 'show menu' link*/
+.tc-topbar-left .show-menu {
+	display:block;
+}
+}
